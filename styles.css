@@ -332,7 +332,7 @@ p, h1, h2 {
 
 
 
-@media screen and (max-width: 412px) {
+@media screen and (max-width: 550px) {
     body {
       background-size: contain; 
       min-height: auto; 
