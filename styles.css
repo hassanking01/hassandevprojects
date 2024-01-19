@@ -332,10 +332,13 @@ p, h1, h2 {
 
 
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 400px) {
     body {
       background-size: contain; 
       min-height: auto; 
+    }
+    .locatine img{
+        display: none;
     }
   
     .container {
