@@ -40,6 +40,7 @@ body{
   padding: 40px 35px;
   border-radius: 30px;
   text-align: center;
+  overflow: hidden;
   
   
   
@@ -50,9 +51,14 @@ body{
   left: 30%;
   top: 32%;*/
   font-family: "Roboto", sans-serif;
+  height: 462px; /* Adjust this value as needed */
+  transition: height .3s ease;
 
 
 }
+.container.expanded {
+    height: 640px; /* Adjust this value as needed */
+  }
 
 .search{
     width: 100%;
@@ -331,7 +337,11 @@ p, h1, h2 {
 
 
 
-
+.element {
+    height: 100px;
+    overflow: hidden;
+    transition: height 0.3s ease;
+  }
 
 
 
@@ -344,30 +354,18 @@ p, h1, h2 {
       background-size: cover; 
       min-height: 810px; 
     }
-    .small-screen {
-        .container {
-            max-width: 75%;
-            margin-top: 50px;
-            padding: 20px 10px;
-            min-height: 630px;
-        }
-        .forecast-button {
-            margin: 20px 0;
-          padding: 10px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 16px; 
-        }
-      }
     
+
   
     .container {
       max-width: 75%;
       margin-top: 50px; 
       padding: 20px 10px; 
       min-height: 462px;
+      
     }
+    
+    
   
     .search {
         display: flex;
@@ -501,4 +499,4 @@ p, h1, h2 {
       left: 35%;
       
     }
-  } 
+}
