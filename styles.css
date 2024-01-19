@@ -332,32 +332,78 @@ p, h1, h2 {
 
 
 
-@media screen and (max-width: 550px) {
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
     body {
-      background-size: contain; 
-      min-height: auto; 
+        
+      background-size: cover; 
+      min-height: 810px; 
     }
-    .locatine img{
-        display: none;
-    }
+    .small-screen {
+        .container {
+            max-width: 75%;
+            margin-top: 50px;
+            padding: 20px 10px;
+            min-height: 630px;
+        }
+        .forecast-button {
+            margin: 20px 0;
+          padding: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 16px; 
+        }
+      }
+    
   
     .container {
-      max-width: 100%;
+      max-width: 75%;
       margin-top: 50px; 
       padding: 20px 10px; 
+      min-height: 462px;
     }
   
     .search {
-      flex-direction: column;
-      align-items: stretch;
+        display: flex;
+        
+        justify-content: center;
+      flex-direction: row;
+      align-items: center;
     }
   
     .search input {
-      margin-bottom: 10px;
+        min-width: 150px;
+    
+      height: 40px;
+      border: 0;
+      outline: 0;
     }
+    .search button{
+        width: 50px;
+        height: 50px;
+        border: 0;
+        outline: 0;
+    }
+    .locatine, .gg-search img{
+        width: 15px;
+    
+    }
+    .gg-search img{
+        width: 15px;
+    
+    }
+
   
-    .weather-info {
-      margin: 20px auto 0;
+    .weather {
+        margin: 20px auto 0;
+      
+      
     }
   
     .weather h1 {
@@ -376,7 +422,7 @@ p, h1, h2 {
     }
   
     .col {
-      margin-bottom: 10px;
+      margin: 20px 0;
     }
   
     .humidity,
@@ -386,7 +432,11 @@ p, h1, h2 {
     }
   
     .forecast-button {
-      padding: 15px;
+        margin: 20px 0;
+      padding: 10px;
+      display: none;
+      justify-content: center;
+      align-items: center;
       font-size: 16px; 
     }
   
@@ -395,6 +445,7 @@ p, h1, h2 {
     }
   
     .day-item {
+        position: relative;
       width: 100%;
       margin: 0 0 20px 0; 
     }
@@ -405,30 +456,40 @@ p, h1, h2 {
   
     .temp {
       font-size: 20px; 
+      margin: 20PX 0;
     }
   
     .day-item h1 {
       font-size: 20px; 
-      margin-top: 10px; 
+      margin-top: 30px; 
     }
   
     .details {
-      margin-top: 80px; 
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        margin-top: -10px;
+        top: 321px;
     }
   
     .col2 img {
-      width: 20px; 
+      width: 30px; 
       margin: 0 5px; 
     }
   
     .humidity2,
     .wind2 {
-      font-size: 10px;
+      font-size: 20px;
       margin-top: -4px; 
     }
   
     .Weather-icon {
       width: 120px; 
+      margin-top: 30px
     }
   
     .back-button {
@@ -436,6 +497,8 @@ p, h1, h2 {
       height: 40px;
       font-size: 14px; 
       margin-top: 10px; 
+      position: relative;
+      left: 35%;
+      
     }
-  }
-  
+  } 

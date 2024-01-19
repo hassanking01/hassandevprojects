@@ -102,6 +102,7 @@ async function checkWeather(city) {
     if (!fivedays.classList.contains("hidden")){
       fivedays.style.display = "inline-block";
     }
+    document.body.classList.toggle('small-screen');
     
     console.log(data); 
     if (data.message === "Nothing to geocode") {
