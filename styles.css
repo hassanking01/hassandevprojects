@@ -10,7 +10,7 @@
 
 
 body {
-  background: url('/imgs/weather.jpg');
+  background: url(https://res.cloudinary.com/dwbjwii6k/image/upload/t_Banner%2016:9/v1705777879/weather_nbhbg8.jpg);
   display: block;
   background-size: cover;
   margin-left: auto;

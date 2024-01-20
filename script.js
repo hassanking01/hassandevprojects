@@ -203,7 +203,7 @@ sB.addEventListener(
 )
 
 fivedays.addEventListener("click", async () => {
-  fiveday.classList.toggle('visible');
+  
 
   const promises = [];
 
@@ -220,7 +220,7 @@ fivedays.addEventListener("click", async () => {
       container.style.height = container.clientHeight === 100 ? '0px' : '640px';
       
       oneday.style.display = "none";
-
+    fiveday.classList.toggle('visible');
   fiveday.style.display = "inline";
 
       console.log(`Number of day items: ${noonData2.length}`);
