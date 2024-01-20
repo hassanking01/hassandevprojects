@@ -1,7 +1,6 @@
 const apiKey = "c4060b4dd12716fa10d59622c50ead1e";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 const fivedays = document.querySelector(".forecast-button");
-const fivedayscity = document.querySelector(".city")
 let apiUrl2 = `https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=${apiKey}`; 
 const oneday = document.querySelector(".container");
 const fiveday = document.querySelector(".forecast-container")
@@ -180,7 +179,10 @@ fivedays.addEventListener("click", async () => {
 
       const data2 = await response.json();
       const noonData2 = data2.list.filter(entry => entry.dt_txt.includes(' 12:00:00'));
+      container.style.height = container.clientHeight === 100 ? '640px' : '0px';
+      
       oneday.style.display = "none";
+
   fiveday.style.display = "inline";
 
       console.log(`Number of day items: ${noonData2.length}`);
@@ -299,5 +301,6 @@ window.addEventListener("unload", function () {
 
 backButton.addEventListener("click", () => {
   oneday.style.display = "block";
+  container.style.height = container.clientHeight === 100 ? '0xp' : '640px';
   fiveday.style.display = "none";
 })

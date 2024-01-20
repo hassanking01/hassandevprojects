@@ -52,7 +52,7 @@ body{
   top: 32%;*/
   font-family: "Roboto", sans-serif;
   height: 462px; /* Adjust this value as needed */
-  transition: height .3s ease;
+  transition: height .15s ease;
 
 
 }
@@ -301,6 +301,7 @@ backdrop-filter: blur(17px);
 
 .Weather-icon{
     width: 191px;
+    
 }
 .back-button {
     text-decoration: none;
@@ -405,7 +406,17 @@ p, h1, h2 {
     }
   
     .weather h1 {
-      font-size: 60px; 
+        position: relative;
+    top: 12px;
+    z-index: -1;
+    left: 24px;
+    font-size: 75px;
+    background: -webkit-linear-gradient(90deg, rgb(188, 12, 241), rgb(212, 4, 4));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-left: -77px;
+    margin-top: 14px;
+      
     }
   
     .weather h2 {
@@ -417,6 +428,10 @@ p, h1, h2 {
       flex-direction: column;
       align-items: stretch;
       margin-top: 30px; 
+      position: absolute;
+    top: 220%;
+    left: 25%;
+    right: 25%;
     }
   
     .col {
@@ -486,8 +501,12 @@ p, h1, h2 {
     }
   
     .Weather-icon {
-      width: 120px; 
-      margin-top: 30px
+        width: 201px;
+        margin-top: 30px;
+        position: absolute;
+        left: 25%;
+        top: 54px;
+  
     }
   
     .back-button {
