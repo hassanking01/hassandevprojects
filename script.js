@@ -171,6 +171,7 @@ wI.src = `imgs/${iconPath || 'default.png'}`;
 
 btn.addEventListener("click", () => {
   checkWeather(sB.value);
+  fiveday.classList.toggle('visible');
 });
 
 sB.addEventListener(
@@ -202,7 +203,7 @@ sB.addEventListener(
 )
 
 fivedays.addEventListener("click", async () => {
-  
+  fiveday.classList.toggle('visible');
 
   const promises = [];
 
@@ -216,7 +217,7 @@ fivedays.addEventListener("click", async () => {
 
       const data2 = await response.json();
       const noonData2 = data2.list.filter(entry => entry.dt_txt.includes(' 12:00:00'));
-      container.style.height = container.clientHeight === 100 ? '640px' : '0px';
+      container.style.height = container.clientHeight === 100 ? '0px' : '640px';
       
       oneday.style.display = "none";
 
@@ -337,7 +338,9 @@ window.addEventListener("unload", function () {
 });
 
 backButton.addEventListener("click", () => {
+  fiveday.classList.add('visible');
+  fiveday.classList.toggle('visible');
   oneday.style.display = "block";
-  container.style.height = container.clientHeight === 100 ? '0xp' : '640px';
-  fiveday.style.display = "none";
+  container.style.height = container.clientHeight === 100 ? '0px' : '640px';
+  
 })
