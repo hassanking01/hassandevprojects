@@ -433,7 +433,7 @@ p, h1, h2 {
     top: 110%;
     left: 25%;
     right: 25%;
-    transition: top .15s ease;
+    transition: top .5s ease;
     }
     .details.active {
       top: 220%;
