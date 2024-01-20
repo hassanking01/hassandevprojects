@@ -98,6 +98,22 @@ async function checkWeather(city) {
 
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
     const data = await response.json();
+
+
+
+ const currentTime = new Date().getTime() / 1000; // Convert to seconds
+    const sunriseTime = data.sys.sunrise;
+    const sunsetTime = data.sys.sunset;
+
+    const isNight = currentTime > sunsetTime || currentTime < sunriseTime;
+
+  
+
+
+
+
+
+    
     if (!fivedays.classList.contains("hidden")){
       fivedays.style.display = "inline-block";
     }
@@ -116,17 +132,51 @@ async function checkWeather(city) {
     document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
 
-    const weatherIcons = {
-      'Clear': 'clear.png',
-      'Clouds': 'clouds.png',
-      'Drizzle': 'drizzle.png',
-      'Mist': 'mist.png',
-      'Snow': 'snow.png',
-      'Rain': 'rain.png',
-    };
+    
 
-    const weatherMain = data.weather[0].main;
-    wI.src = `imgs/${weatherIcons[weatherMain] || 'default.png'}`;
+const weatherIcons = {
+  'Clear': 'clear.png',
+  'Clouds': 'clouds.png',
+  'Drizzle': 'drizzle.png',
+  'Haze': 'mist.png',
+  'Mist': 'mist.png',
+  'Snow': 'snow.png',
+  'Rain': 'rain.png',
+};
+
+const weatherIconsNight = {
+  'Clear': 'clearN.png',
+  'Clouds': 'cloudsN.png',
+  'Drizzle': 'drizzleN.png',
+  'Haze': 'mist.png',
+  
+  'Mist': 'mist.png',
+  'Snow': 'snow.png',
+  'Rain': 'rain.png',
+  
+};
+
+const weatherMain = data.weather[0].main;
+
+
+
+const iconPath = isNight ? weatherIconsNight[weatherMain] : weatherIcons[weatherMain];
+wI.src = `imgs/${iconPath || 'default.png'}`;
+
+
+
+
+    
+
+  
+
+
+
+
+
+
+
+    
   } catch (error) {
     console.error('Error:', error);
 
