@@ -82,7 +82,7 @@ function removeElements() {
 
 
 
-
+const detials = document.querySelector(".detials")
 
 
 
@@ -102,6 +102,7 @@ async function checkWeather(city) {
       fivedays.style.display = "inline-block";
     }
     container.style.height = container.clientHeight === 100 ? '462px' : '640px';
+    detials.style.top = container.style.top === '100%' ? '110%' : '220%';
     
     console.log(data); 
     if (data.message === "Nothing to geocode") {

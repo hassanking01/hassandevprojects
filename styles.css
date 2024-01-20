@@ -363,6 +363,7 @@ p, h1, h2 {
       margin-top: 50px; 
       padding: 20px 10px; 
       min-height: 462px;
+
       
     }
     
@@ -429,9 +430,13 @@ p, h1, h2 {
       align-items: stretch;
       margin-top: 30px; 
       position: absolute;
-    top: 220%;
+    top: 110%;
     left: 25%;
     right: 25%;
+    transition: top .15s ease;
+    }
+    .details.active {
+      top: 220%;
     }
   
     .col {
@@ -487,7 +492,7 @@ p, h1, h2 {
         padding: 0 20px;
         margin-top: -10px;
         top: 321px;
-    }
+    } 
   
     .col2 img {
       width: 30px; 
