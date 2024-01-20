@@ -10,7 +10,7 @@
 
 
 body{
-    background:url(imgs/weather.jpeg);
+    background:url('/imgs/weather.jpg');
     display: block;
     background-size: cover;
     margin-left: auto;

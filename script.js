@@ -101,7 +101,7 @@ async function checkWeather(city) {
 
 
 
- const currentTime = new Date().getTime() / 1000; // Convert to seconds
+ const currentTime = new Date().getTime() / 1000; 
     const sunriseTime = data.sys.sunrise;
     const sunsetTime = data.sys.sunset;
 
@@ -162,20 +162,6 @@ const weatherMain = data.weather[0].main;
 
 const iconPath = isNight ? weatherIconsNight[weatherMain] : weatherIcons[weatherMain];
 wI.src = `imgs/${iconPath || 'default.png'}`;
-
-
-
-
-    
-
-  
-
-
-
-
-
-
-
     
   } catch (error) {
     console.error('Error:', error);
@@ -263,7 +249,7 @@ fivedays.addEventListener("click", async () => {
 
           dayItem.querySelector('.wind2').textContent = `${entry.wind.speed} km/h`;
 
-          // Use a switch statement to set the background color based on weatherMain
+          
           const theDay = document.querySelector(`#day-item${index}`);
           switch (weatherMain) {
             case 'Clear':
@@ -285,7 +271,7 @@ fivedays.addEventListener("click", async () => {
               theDay.style.background = rainb;
               break;
             default:
-              // Set a default background color if weatherMain is not recognized
+              
               theDay.style.background = 'transparent';
               break;
           }
