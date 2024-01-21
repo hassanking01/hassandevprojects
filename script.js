@@ -18,7 +18,6 @@ async function fetchJsonData(url) {
   return response.json();
 }
 
-
 const snowb = 'radial-gradient(circle, rgba(168,255,254,1) 0%, rgba(119,175,251,1) 100%)';
 const mistb = 'radial-gradient(circle, rgba(235,255,168,1) 0%, rgba(119,208,251,1) 100%)';
 const drizzleb = 'radial-gradient(circle, rgba(246,249,176,1) 0%, rgba(6,138,201,1) 100%)';
@@ -26,20 +25,9 @@ const cloudsb = 'radial-gradient(circle, rgba(230,232,193,1) 0%, rgba(4,194,255,
 const clearb = 'radial-gradient(circle, rgba(234,241,105,1) 0%, rgba(192,223,233,1) 100%)';
 const rainb = 'radial-gradient(circle, rgba(105,241,237,1) 0%, rgba(64,157,247,1) 100%)';
 
-
-
-
-
-
-
-
-
-
-
 import { names } from './array.js';
 
 let sortedNames = names.sort();
-
 
 const suggestionsList = document.querySelector('.suggestions-list');
 
@@ -54,18 +42,16 @@ sB.addEventListener("input", (e) => {
       listItem.style.cursor = "pointer";
       listItem.innerHTML = "<b>" + i.substr(0, searchTerm.length) + "</b>" + i.substr(searchTerm.length);
 
-      
       listItem.addEventListener("click", function() {
         console.log("Clicked: " + i);
         displayNames(i);
-        checkWeather(i);  
+        checkWeather(i, true);  // Pass true to update the input field
       });
-     
+
       suggestionsList.appendChild(listItem);
     }
   }
   listItem.style.display = "hidden";
-  
 });
 
 function displayNames(value) {
@@ -80,92 +66,66 @@ function removeElements() {
   }
 }
 
-
-
 const detials = document.querySelector(".detials")
 
-
-
-
-
-
-async function checkWeather(city) {
+async function checkWeather(city, updateInput = true) {
   try {
-
-    
-
-
-
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
     const data = await response.json();
 
-
-
- const currentTime = new Date().getTime() / 1000; 
+    const currentTime = new Date().getTime() / 1000; 
     const sunriseTime = data.sys.sunrise;
     const sunsetTime = data.sys.sunset;
 
     const isNight = currentTime > sunsetTime || currentTime < sunriseTime;
 
-  
-
-
-
-
-
-    
     if (!fivedays.classList.contains("hidden")){
       fivedays.style.display = "inline-block";
     }
     container.style.height = container.clientHeight === 100 ? '462px' : '640px';
     detials.style.top = container.style.top === '100%' ? '110%' : '220%';
-    
+
     console.log(data); 
     if (data.message === "Nothing to geocode") {
       fivedays.style.display = "none";
     }
-    
 
+    if (updateInput) {
+      sB.value = data.name;  // Update the input field only if updateInput is true
+    }
 
     document.querySelector(".city").innerHTML = data.name;
     document.querySelector(".temp").innerHTML = data.main.temp + "°C";
     document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
 
-    
+    const weatherIcons = {
+      'Clear': 'clear.png',
+      'Clouds': 'clouds.png',
+      'Drizzle': 'drizzle.png',
+      'Haze': 'mist.png',
+      'Mist': 'mist.png',
+      'Snow': 'snow.png',
+      'Rain': 'rain.png',
+    };
 
-const weatherIcons = {
-  'Clear': 'clear.png',
-  'Clouds': 'clouds.png',
-  'Drizzle': 'drizzle.png',
-  'Haze': 'mist.png',
-  'Mist': 'mist.png',
-  'Snow': 'snow.png',
-  'Rain': 'rain.png',
-};
+    const weatherIconsNight = {
+      'Clear': 'clearN.png',
+      'Clouds': 'cloudsN.png',
+      'Drizzle': 'drizzleN.png',
+      'Haze': 'mist.png',
+      'Mist': 'mist.png',
+      'Snow': 'snow.png',
+      'Rain': 'rain.png',
+    };
 
-const weatherIconsNight = {
-  'Clear': 'clearN.png',
-  'Clouds': 'cloudsN.png',
-  'Drizzle': 'drizzleN.png',
-  'Haze': 'mist.png',
-  
-  'Mist': 'mist.png',
-  'Snow': 'snow.png',
-  'Rain': 'rain.png',
-  
-};
+    const weatherMain = data.weather[0].main;
 
-const weatherMain = data.weather[0].main;
+    const iconPath = isNight ? weatherIconsNight[weatherMain] : weatherIcons[weatherMain];
+    wI.src = `imgs/${iconPath || 'default.png'}`;
 
-
-
-const iconPath = isNight ? weatherIconsNight[weatherMain] : weatherIcons[weatherMain];
-wI.src = `imgs/${iconPath || 'default.png'}`;
-    
   } catch (error) {
     console.error('Error:', error);
-
   }
 }
 
@@ -177,7 +137,7 @@ btn.addEventListener("click", () => {
 sB.addEventListener(
   'keyup', (e) => {
     if (e.keyCode === 13) {
-      checkWeather(sB.value).then( () =>{
+      checkWeather(sB.value, false).then( () => {
         fivedays.style.display = "inline-block";
       });
       suggestionsList.style.display = "none";
@@ -185,26 +145,21 @@ sB.addEventListener(
   }
 );
 
-
-
 btn.addEventListener("click", () => {
-  
- 
 });
+
 sB.addEventListener(
   'keyup', (e) => {
     if (e.keyCode === 13) {
       fivedays.classList.toggle("hidden");
-  if (!fivedays.classList.contains("hidden")){
-    fivedays.style.display = "inline-block";
-  }
+      if (!fivedays.classList.contains("hidden")){
+        fivedays.style.display = "inline-block";
+      }
     }
   }
 )
 
 fivedays.addEventListener("click", async () => {
-  
-
   const promises = [];
 
   async function checkWeather2(city) {
@@ -218,10 +173,10 @@ fivedays.addEventListener("click", async () => {
       const data2 = await response.json();
       const noonData2 = data2.list.filter(entry => entry.dt_txt.includes(' 12:00:00'));
       container.style.height = container.clientHeight === 100 ? '0px' : '640px';
-      
+
       oneday.style.display = "none";
-    fiveday.classList.toggle('visible');
-  fiveday.style.display = "inline";
+      fiveday.classList.toggle('visible');
+      fiveday.style.display = "inline";
 
       console.log(`Number of day items: ${noonData2.length}`);
 
@@ -250,7 +205,6 @@ fivedays.addEventListener("click", async () => {
 
           dayItem.querySelector('.wind2').textContent = `${entry.wind.speed} km/h`;
 
-          
           const theDay = document.querySelector(`#day-item${index}`);
           switch (weatherMain) {
             case 'Clear':
@@ -272,7 +226,6 @@ fivedays.addEventListener("click", async () => {
               theDay.style.background = rainb;
               break;
             default:
-              
               theDay.style.background = 'transparent';
               break;
           }
@@ -287,17 +240,14 @@ fivedays.addEventListener("click", async () => {
   await Promise.all(promises);
 });
 
-
-
-
-
 const locationBtn = document.querySelector(".locatine");
-
-
 let watchId;
+let isGeolocationSearchInProgress = false;
 
 locationBtn.addEventListener("click", function () {
-  if (navigator.geolocation) {
+  if (!isGeolocationSearchInProgress && navigator.geolocation) {
+    isGeolocationSearchInProgress = true;
+
     if (watchId) {
       navigator.geolocation.clearWatch(watchId);
     }
@@ -310,26 +260,24 @@ locationBtn.addEventListener("click", function () {
           const response = await fetch(reverseGeocodingUrl);
           const data = await response.json();
 
-          const cityName = data[0].name.split(",")[0]; 
+          const cityName = data[0].name.split(",")[0];
 
-          sB.value = cityName;
-
-          checkWeather(cityName);
+          checkWeather(cityName, true);  // Pass true to update the input field
         } catch (error) {
           console.error("Error getting location:", error.message);
+        } finally {
+          isGeolocationSearchInProgress = false;
         }
       },
       function (error) {
         console.error("Error getting location:", error.message);
+        isGeolocationSearchInProgress = false;
       }
     );
   } else {
     console.error("Geolocation is not supported by this browser.");
   }
-  
 });
-
-
 
 window.addEventListener("unload", function () {
     if (navigator.geolocation && watchId) {
@@ -342,5 +290,4 @@ backButton.addEventListener("click", () => {
   fiveday.classList.toggle('visible');
   oneday.style.display = "block";
   container.style.height = container.clientHeight === 100 ? '0px' : '640px';
-  
-})
+});

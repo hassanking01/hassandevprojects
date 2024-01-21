@@ -17,6 +17,7 @@ body {
   margin-right: auto;
   width: 100%;
   min-height: 690px;
+  overflow: hidden;
 
   /*  display: flex;
     justify-content: center;
@@ -237,6 +238,7 @@ a {
   opacity: 0;
   visibility: hidden;
   transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  
 }
 
 
@@ -245,6 +247,7 @@ a {
 
 .forecast-list {
   display: flex;
+  
   justify-content: space-between;
   overflow: hidden;
 
@@ -272,6 +275,7 @@ a {
 }
 
 .day-item {
+  
   width: 50%;
   border: 15px solid transparent;
   border-radius: 10px;
@@ -388,13 +392,115 @@ h2 {
 }
 
 
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.16);
+  border-top-left-radius: 20px; /* Choose your desired radius */
+  border-top-right-radius: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.1px);
+  -webkit-backdrop-filter: blur(10.1px);
+  max-height: 100px;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.social-icon,
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.social-icon__item,
+.menu__item {
+  list-style: none;
+}
+
+.social-icon__link {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+.social-icon__link:hover {
+  transform: translateY(-10px);
+}
+
+.menu__link {
+  font-size: 1.2rem;
+  color: #1d1a1a;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+  text-decoration: none;
+  opacity: 0.75;
+  font-weight: 500;
+  transition: .2s;
+}
+
+.menu__link:hover {
+  opacity: 1;
+  color:rgb(197, 58, 248);
+}
+
+.footer p {
+  color: #fff;
+  margin: 5px 0 10px 0;
+  font-size: 1rem;
+  font-weight: 300;
+  align-items: flex-end;
+}
+.mygit {
+  color: #dcf119;
+    text-shadow: 3px 3px 9px black;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+.mygit:hover{
+  color: #d6640d;
+
+
+
+}
+
+@keyframes animateWaves {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position-x: -1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+
+
 
 
 
 
 @media screen and (max-width: 600px) {
   body {
-
+    background-image: url(https://res.cloudinary.com/dwbjwii6k/image/upload/t_Banner%209:16/v1705777879/weather_nbhbg8.jpg);
+    overflow: auto;
     background-size: cover;
     min-height: 810px;
   }
@@ -508,6 +614,7 @@ h2 {
 
   .forecast-list {
     flex-direction: column;
+    
   }
 
   .day-item {
