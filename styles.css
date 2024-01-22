@@ -681,6 +681,8 @@ h2 {
   }
   .footer {
     padding: 15px; 
+    position: fixed;
+    bottom: 0%;
   }
 
   .social-icon__link {
@@ -701,3 +703,4 @@ h2 {
     font-size: 1rem; 
   }
 }
+
