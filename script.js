@@ -197,7 +197,7 @@ fivedays.addEventListener("click", async () => {
           const weatherIconElement = dayItem.querySelector('.Weather-icon');
           const weatherMain = entry.weather[0].main;
           const weatherIcons = {
-            'Clear': 'clear.png',
+            'Clear': 'clear.svg',
             'Clouds': 'clouds.png',
             'Drizzle': 'drizzle.png',
             'Mist': 'mist.png',
@@ -244,9 +244,10 @@ fivedays.addEventListener("click", async () => {
   await Promise.all(promises);
 });
 
-const locationBtn = document.querySelector(".locatine");
+const   locationBtn = document.querySelector(".locatine");
 let watchId;
 let isGeolocationSearchInProgress = false;
+let weatherFetched = false; 
 
 locationBtn.addEventListener("click", function () {
   if (!isGeolocationSearchInProgress && navigator.geolocation) {
@@ -255,6 +256,7 @@ locationBtn.addEventListener("click", function () {
     if (watchId) {
       navigator.geolocation.clearWatch(watchId);
     }
+    
 
     watchId = navigator.geolocation.watchPosition(
       async function (position) {
@@ -263,10 +265,13 @@ locationBtn.addEventListener("click", function () {
           const reverseGeocodingUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&limit=1&appid=${apiKey}&timestamp=${timestamp}`;
           const response = await fetch(reverseGeocodingUrl);
           const data = await response.json();
-
+          console.log(position);
+          
           const cityName = data[0].name.split(",")[0];
 
-          checkWeather(cityName, true);  // Pass true to update the input field
+          checkWeather(cityName, true);
+          data[0].name = '';
+            // Pass true to update the input field
         } catch (error) {
           console.error("Error getting location:", error.message);
         } finally {
@@ -277,7 +282,9 @@ locationBtn.addEventListener("click", function () {
         console.error("Error getting location:", error.message);
         isGeolocationSearchInProgress = false;
       }
+      
     );
+    
   } else {
     console.error("Geolocation is not supported by this browser.");
   }
