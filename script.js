@@ -101,23 +101,23 @@ async function checkWeather(city, updateInput = true) {
     document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
 
     const weatherIcons = {
-      'Clear': 'clear.png',
+      'Clear': 'clear.webp',
       'Clouds': 'clouds.webp',
-      'Drizzle': 'drizzle.png',
-      'Haze': 'mist.png',
-      'Mist': 'mist.png',
-      'Snow': 'snow.png',
-      'Rain': 'rain.png',
+      'Drizzle': 'drizzle.webp',
+      'Haze': 'mist.webp',
+      'Mist': 'mist.webp',
+      'Snow': 'snow.webp',
+      'Rain': 'rain.webp',
     };
 
     const weatherIconsNight = {
-      'Clear': 'clearN.png',
-      'Clouds': 'cloudsN.png',
-      'Drizzle': 'drizzleN.png',
-      'Haze': 'mist.png',
-      'Mist': 'mist.png',
-      'Snow': 'snow.png',
-      'Rain': 'rain.png',
+      'Clear': 'clearN.webp',
+      'Clouds': 'cloudsN.webp',
+      'Drizzle': 'drizzleN.webp',
+      'Haze': 'mist.webp',
+      'Mist': 'mist.webp',
+      'Snow': 'snow.webp',
+      'Rain': 'rain.webp',
     };
 
     const weatherMain = data.weather[0].main;
@@ -197,12 +197,12 @@ fivedays.addEventListener("click", async () => {
           const weatherIconElement = dayItem.querySelector('.Weather-icon');
           const weatherMain = entry.weather[0].main;
           const weatherIcons = {
-            'Clear': 'clear.png',
+            'Clear': 'clear.webp',
             'Clouds': 'clouds.webp',
-            'Drizzle': 'drizzle.png',
-            'Mist': 'mist.png',
-            'Snow': 'snow.png',
-            'Rain': 'rain.png',
+            'Drizzle': 'drizzle.webp',
+            'Mist': 'mist.webp',
+            'Snow': 'snow.webp',
+            'Rain': 'rain.webp',
           };
 
           weatherIconElement.src = `imgs/${weatherIcons[weatherMain] || 'default.png'}`;
