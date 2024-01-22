@@ -102,7 +102,7 @@ async function checkWeather(city, updateInput = true) {
 
     const weatherIcons = {
       'Clear': 'clear.png',
-      'Clouds': 'clouds.png',
+      'Clouds': 'clouds.webp',
       'Drizzle': 'drizzle.png',
       'Haze': 'mist.png',
       'Mist': 'mist.png',
@@ -197,8 +197,8 @@ fivedays.addEventListener("click", async () => {
           const weatherIconElement = dayItem.querySelector('.Weather-icon');
           const weatherMain = entry.weather[0].main;
           const weatherIcons = {
-            'Clear': 'clear.svg',
-            'Clouds': 'clouds.png',
+            'Clear': 'clear.png',
+            'Clouds': 'clouds.webp',
             'Drizzle': 'drizzle.png',
             'Mist': 'mist.png',
             'Snow': 'snow.png',
