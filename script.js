@@ -18,7 +18,7 @@ async function fetchJsonData(url) {
   return response.json();
 }
 
-const snowb = 'radial-gradient(circle, rgba(168,255,254,1) 0%, rgba(119,175,251,1) 100%)';
+const snowb = 'radial-gradient(circle, rgba(102,251,247,1) 0%, rgba(229,242,255,1) 100%)';
 const mistb = 'radial-gradient(circle, rgba(235,255,168,1) 0%, rgba(119,208,251,1) 100%)';
 const drizzleb = 'radial-gradient(circle, rgba(246,249,176,1) 0%, rgba(6,138,201,1) 100%)';
 const cloudsb = 'radial-gradient(circle, rgba(230,232,193,1) 0%, rgba(4,194,255,1) 100%)';
@@ -78,6 +78,7 @@ async function checkWeather(city, updateInput = true) {
     const sunsetTime = data.sys.sunset;
 
     const isNight = currentTime > sunsetTime || currentTime < sunriseTime;
+    console.log(response);
 
     if (!fivedays.classList.contains("hidden")){
       fivedays.style.display = "inline-block";
@@ -130,8 +131,10 @@ async function checkWeather(city, updateInput = true) {
 }
 
 btn.addEventListener("click", () => {
+  
   checkWeather(sB.value);
-  fiveday.classList.toggle('visible');
+  
+ 
 });
 
 sB.addEventListener(
@@ -176,6 +179,7 @@ fivedays.addEventListener("click", async () => {
 
       oneday.style.display = "none";
       fiveday.classList.toggle('visible');
+      
       fiveday.style.display = "inline";
 
       console.log(`Number of day items: ${noonData2.length}`);
