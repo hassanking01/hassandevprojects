@@ -265,12 +265,12 @@ locationBtn.addEventListener("click", function () {
           const reverseGeocodingUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&limit=1&appid=${apiKey}&timestamp=${timestamp}`;
           const response = await fetch(reverseGeocodingUrl);
           const data = await response.json();
-          console.log(position);
+          
           
           const cityName = data[0].name.split(",")[0];
-
+          console.log(cityName);
           checkWeather(cityName, true);
-          data[0].name = '';
+          
             // Pass true to update the input field
         } catch (error) {
           console.error("Error getting location:", error.message);

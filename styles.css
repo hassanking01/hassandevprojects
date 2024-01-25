@@ -24,6 +24,15 @@ body {
     align-items: center;
     justify-content: center;*/
 
+}.logo{
+  display: flex;
+  position: absolute ;
+  left: 90px;
+  top: -1px;
+}
+.logo img{
+  width: 200px;
+  height: 200px;
 }
 
 .container {
@@ -702,5 +711,17 @@ h2 {
   .mygit {
     font-size: 1rem; 
   }
+  .logo{
+    display: flex;
+    position: relative ;
+    left: 90px;
+    top: -1px;
+   }
+   .logo img{
+    width: 130px;
+    height: 130px;
+  }
 }
+
+
 
