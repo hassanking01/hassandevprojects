@@ -257,8 +257,8 @@ locationBtn.addEventListener("click", function () {
       navigator.geolocation.clearWatch(watchId);
     }
     
-
-    watchId = navigator.geolocation.watchPosition(
+    
+    watchId = navigator.geolocation.getCurrentPosition(
       async function (position) {
         try {
           const timestamp = new Date().getTime();
@@ -268,10 +268,12 @@ locationBtn.addEventListener("click", function () {
           
           
           const cityName = data[0].name.split(",")[0];
-          console.log(cityName);
-          checkWeather(cityName, true);
           
-            // Pass true to update the input field
+          
+          checkWeather(cityName, true);
+         
+          
+            // Pass true to update the input fieldi
         } catch (error) {
           console.error("Error getting location:", error.message);
         } finally {
@@ -283,7 +285,9 @@ locationBtn.addEventListener("click", function () {
         isGeolocationSearchInProgress = false;
       }
       
+      
     );
+    
     
   } else {
     console.error("Geolocation is not supported by this browser.");
@@ -302,3 +306,10 @@ backButton.addEventListener("click", () => {
   oneday.style.display = "block";
   container.style.height = container.clientHeight === 100 ? '0px' : '640px';
 });
+
+
+
+
+
+
+     
